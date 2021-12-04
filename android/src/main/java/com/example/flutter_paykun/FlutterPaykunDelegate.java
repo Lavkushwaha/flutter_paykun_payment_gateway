@@ -30,18 +30,22 @@ public class FlutterPaykunDelegate implements  PluginRegistry.ActivityResultList
     private String merchantIdLive="710730426562225"; // merchant id for live mode application id  = com.paykunsandbox.live
     private String accessTokenLive="6E51763DF010B981F214533F294D2A0C"; // access token for live mode application id  = com.paykunsandbox.live
 
-    private String merchantIdSandbox="895775588965854"; // merchant id for sandbox mode application id = com.paykun.sandbox
-    private String accessTokenSandbox="74B92BC0C039D9AD7D02FA4993253E8B"; // access token for sandbox application id = com.paykun.sandbox
+    private String merchantIdSandbox="453991720211963"; // merchant id for sandbox mode application id = com.paykun.sandbox
+    private String accessTokenSandbox="E2020496E9C28E0E844F530B1B69A9D6"; // access token for sandbox application id = com.paykun.sandbox
 
     private String customerName="Bhavik",customerPhone="8256400020",customerEmail="bhavik.makvana@paykun.com";
-    private String productName="Paykun Test Product",orderNo="7895812590123",amount="10";
+    private String productName="Paykun Test Product",orderNo="7895812590122",amount="10";
 
 
 
     FlutterPaykunDelegate(Activity activity){
         this.activity = activity;
+
 //        GlobalBus.getBus().register(this);
     }
+
+
+
 
 
 
@@ -59,13 +63,14 @@ public class FlutterPaykunDelegate implements  PluginRegistry.ActivityResultList
             object.put("product_name",productName);
             object.put("order_no",System.currentTimeMillis()); // order no. should have 10 to 30 character in numeric format
             object.put("amount",amount);  // minimum amount should be 10
-            object.put("isLive",false); // need to send false if you are in sandbox mode
+            object.put("isLive",false);
+            // need to send false if you are in sandbox mode
         } catch (JSONException e) {
             e.printStackTrace();
         }
         new PaykunApiCall.Builder(activity).sendJsonObject(object); // Paykun api to initialize your payment and send info.
 
-        EventBus.getDefault().post(object);
+
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
