@@ -1,7 +1,8 @@
 name: flutter_paykun
 description: A new flutter plugin project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/Lavkushwaha/flutter_paykun_payment_gateway
+repository: https://github.com/Lavkushwaha/flutter_paykun_payment_gateway
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
