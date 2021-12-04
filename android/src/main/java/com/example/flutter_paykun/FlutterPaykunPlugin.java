@@ -4,6 +4,8 @@ import android.app.Activity;
 
 import androidx.annotation.NonNull;
 
+import org.greenrobot.eventbus.EventBus;
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
@@ -30,6 +32,16 @@ public class FlutterPaykunPlugin implements FlutterPlugin, MethodCallHandler, Ac
   private FlutterPaykunDelegate delegate;
 
   private Activity activity;
+
+  public void onStart(){
+    EventBus.getDefault().register(this);
+  }
+
+  public void onStop(){
+    EventBus.getDefault().unregister(this);
+
+
+  }
 
 
   public static void registerWith(Registrar registrar) {
@@ -75,12 +87,17 @@ public class FlutterPaykunPlugin implements FlutterPlugin, MethodCallHandler, Ac
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
     channel.setMethodCallHandler(null);
     channel= null;
+    onStop();
 
   }
+
 
   private void onAttachedToActivity(Activity activity) {
     this.activity = activity;
     delegate = new FlutterPaykunDelegate(activity);
+    onStart();
+//    GlobalBus.getBus().register(activity);
+
   }
 
   @Override
@@ -111,5 +128,7 @@ public class FlutterPaykunPlugin implements FlutterPlugin, MethodCallHandler, Ac
   public void onDetachedFromActivity() {
     activity = null;
     delegate = null;
+//    GlobalBus.getBus().unregister(activity);
+
   }
 }
