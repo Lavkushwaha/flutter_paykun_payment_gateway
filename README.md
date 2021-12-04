@@ -27,7 +27,14 @@ First, add `flutter_paykun_payment_gateway` as a [dependency in your pubspec.yam
 Change the minimum Android sdk version to 21 (or higher) in your `android/app/build.gradle` file.
 
 ```
-minSdkVersion 21
+minSdkVersion 16
+```
+
+```
+WIP Gettting Error in Android
+D/EventBus(20949): No subscribers registered for event class com.paykun.sdk.eventbus.Events$PaymentMessage
+D/EventBus(20949): No subscribers registered for event class org.greenrobot.eventbus.NoSubscriberEvent
+
 ```
 
 
