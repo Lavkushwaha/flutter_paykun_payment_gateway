@@ -1,3 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.example.flutter_paykun">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        >
+<!--        <activity android:name=".">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="0f67c06feb28a746fcd6276c4bf79020d94b514c" />
+    </application>
 </manifest>
